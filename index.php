@@ -18,4 +18,12 @@ if($url == '/apiteam/' && $methodHTTP == 'GET'){
      echo json_encode($teams);
 }
 
+if($url == '/apiteam/' && $methodHTTP == 'POST'){
+	 $data = $_POST;
+     $api = new Api();
+     $result = $api->addTeam($data);
+     echo $result;
+}
+
+
 ?>
