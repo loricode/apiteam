@@ -24,6 +24,13 @@ if($url == '/apiteam/' && $methodHTTP == 'POST'){
      $result = $api->addTeam($data);
      echo $result;
 }
+  
+if($methodHTTP == 'DELETE'){
+	 $data = $_GET;
+	 $api = new Api();
+     $result = $api->deleteTeam($data);
+	 echo $result;
+}
 
 
 ?>

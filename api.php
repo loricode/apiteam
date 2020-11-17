@@ -38,7 +38,16 @@ public function addTeam($data){
   return '{"msg":"added successfully"}';
 }
 
-
+public function deleteTeam($data){
+  $id = $data['id'];
+  $conexion = new Conexion();
+  $db = $conexion->getConexion();
+  $sql = "DELETE FROM teamfootball WHERE id=:id";
+  $query = $db->prepare($sql);
+  $query->bindParam(':id', $id);
+  $query->execute();
+  return '{"msg":"removed"}';
+}
 }
 
 ?>
