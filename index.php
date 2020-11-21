@@ -19,7 +19,7 @@ if($url == '/apiteam/' && $methodHTTP == 'GET'){
 }
 
 if($url == '/apiteam/' && $methodHTTP == 'POST'){
-	 $data = $_POST;
+	$data = $_POST;
      $api = new Api();
      $result = $api->addTeam($data);
      echo $result;
@@ -28,8 +28,23 @@ if($url == '/apiteam/' && $methodHTTP == 'POST'){
 if($methodHTTP == 'DELETE'){
 	 $data = $_GET;
 	 $api = new Api();
-     $result = $api->deleteTeam($data);
+      $result = $api->deleteTeam($data);
 	 echo $result;
+}
+
+if(!empty($_GET['id']) && $methodHTTP == 'GET'){
+	 $data = $_GET;
+	 $api = new Api();
+     $result = $api->getTeam($data);
+	 echo json_encode($result);
+}
+
+if($url == '/apiteam/' && $methodHTTP == 'PUT'){
+      $data = json_decode(file_get_contents('php://input'), true);
+      $api = new Api();
+      $result = $api->updateTeam($data);
+      echo $result;
+     
 }
 
 
